@@ -1,0 +1,139 @@
+* {
+    margin: 0 auto;
+}
+
+.container{
+    position: relative;
+    left: 200px;
+    bottom: 650px;
+}
+
+.s_header{
+}
+
+body {
+    width: 1100px;
+}
+
+.start-date::after {
+    content: '~';
+}
+
+.p-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.line {
+    margin-top: 10px;
+    border-bottom: 3px solid #808080;
+}
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+td {
+    width: 10%;
+    height: 50px;
+    border: 1px solid #808080;
+}
+
+span {
+    font-size: 20px;
+    display: inline-flex; /* 수정된 부분 */
+    align-items: center;
+}
+
+.info {
+    height: 50px;
+    width: 150px;
+    background-color: #cecdcd;
+    /* 예시로 추가된 배경색 */
+    padding: 0 10px; /* 예시로 추가된 패딩 */
+}
+
+input {
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ScheduleFair.css */
+
+/* 파일 업로드 필드 스타일을 초기화합니다. */
+input[type='file'] {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+/* 파일 업로드 필드의 부모 span을 수정하여 inline-flex로 설정합니다. */
+.info > span {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* 파일 업로드 필드에는 크기 제한을 주지 않습니다. */
+input[type='file'] {
+    width: auto;
+}
+
+/* 예시로 추가된 스타일 */
+.info {
+    height: 50px;
+    width: 150px;
+    background-color: #cecdcd;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type='text'] {
+    border: none;
+    height: 40px;
+}
+
+input[type='email'] {
+    border: none;
+}
+
+input[type='number'] {
+    border: none;
+}
+
+input:focus {
+    outline: 0;
+}
+
+.sub-btn {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+    background-color: #374658;
+    border: none;
+    color: white;
+    font-size: 18px;
+}
+
+.outline input {
+    /* background-color: aqua; */
+    width: 900px;
+}
+
+input::-webkit-inner-spin-button {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
