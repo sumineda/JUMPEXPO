@@ -25,7 +25,8 @@ if(bSuccessUpload) {
 		
 		$url .= "&bNewLine=true";
 		$url .= "&sFileName=".urlencode(urlencode($name));
-		$url .= "&sFileURL=upload/".urlencode(urlencode($name));
+		$url .= "\\\\192.168.2.3\\images\\a";
+// 		$url .= "&sFileURL=upload/".urlencode(urlencode($name));
 	}
 }
 // FAILED
