@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
-//2024.01.08 정정빈 취업박람회 등록 Form
+//2024.01.08 정정빈 박람회 등록 Form
 //취업 박람회 정보 DTO
 @ToString
 @Getter
