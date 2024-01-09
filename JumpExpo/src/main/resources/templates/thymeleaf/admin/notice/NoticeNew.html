@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/static/css/admin/notice/Base.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/admin/notice/NoticeNew.css" type="text/css" rel="stylesheet">
+    <script src="/static/js/admin/notice/jquery-3.7.0.min.js"></script>
+    <title>공지사항 등록 페이지</title>
+</head>
+<body>
+<!--; 어떻게 뜨게 하는 건지 물어보기-->
+<div class="s_header" th:replace="~{admin/header/ScheduleHeader :: scheduleHeader}"></div>
+<div class="sidebar" th:replace="~{admin/side/ScheduleSide :: scheduleSide}"></div>
+<!--    관리자 공지사항 리스트-->
+    <div class="main">
+        <div class="content">
+            <div class="body">
+                <div class="body_title">
+                    <span>공지</span>
+                    <span>사항</span>
+                </div>
+                <form enctype="multipart/form-data" th:action="@{/admin/Notice/create}" method="post" th:object="${NoticeForm}">
+                    <table>
+                        <tr class="nt_title">
+                            <td>
+                                <span> 제목 : </span>
+                                <input type="text" name="notTitle" maxlength="50" required/>
+                            </td>
+                        </tr>
+
+                        <tr class="nt_content">
+                            <td colspan="2">
+                                <textarea required name="notContent" id="ir1" style="width: 900px; height: 400px;"></textarea>
+                            </td>
+                        </tr>
+<!--                        첨부파일 형식 어떻게 하는 지-->
+                        <tr class="filebox">
+                            <td>
+                                <label for="file">파일찾기</label>
+                                <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                                <input type="file" id="file" name="notFile">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="sub-btn"><button class="in_btn" type="submit">작성하기</button></div>
+                </form>
+                <!-- 목록으로돌아가기 -->
+
+            </div>
+        </div>
+        <footer>
+            <div>
+                <a class="logo" href="#"><img src="/static/images/footer_logo.png" alt="로고"></a>
+            </div>
+            <div>
+                <a href="http://www.yeilit.com/main.html" target="_blank">http://www.yeilit.com/main.html</a>
+                <span>정빈  |  성우  |  은채  |  수민</span>
+            </div>
+        </footer>
+    </div>
+<script>
+    let oEditors = [];
+    nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "ir1",
+    sSkinURI: "/static/smarteditor/SmartEditor2Skin.html",
+    fCreator: "createSEditor2"
+    });
+
+    let subBtn = document.querySelector('.in_btn');
+
+    subBtn.onclick = () => {
+        oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+        const textareavalue = document.querySelector("#ir1").value;
+<!--        alert(textareavalue);-->
+
+        let formData = new FormData(document.querySelector("form"));
+
+        formData.forEach((v,k) => {
+            console.log("key: " + k);
+            console.log("value: " + v);
+        })
+</script>
+</body>
+</html>
