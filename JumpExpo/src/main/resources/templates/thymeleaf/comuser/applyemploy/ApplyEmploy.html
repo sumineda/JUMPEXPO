@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/css/comuser/applyemploy/ApplyEmploy.css" rel="stylesheet" />
-<!--    <script src="js/jquery-3.7.0.min.js"></script>-->
+    <!--    <script src="js/jquery-3.7.0.min.js"></script>-->
     <script type="text/javascript" src="/static/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="/static/smarteditor/sample/photo_uploader/jindo.min.js" charset="utf-8"></script>
@@ -29,49 +29,50 @@
             </div>
 
             <form>
-            <button class="write_button">작성하기</button>
-            <table>
-                <tr>
-                    <td class="table_title">제목</td>
-                    <td class="table_content"><input type="text" name="EmnotTitle" class="input_text" maxlength="25" /></td>
-                    <td class="table_title">직종</td>
-                    <td class="table_content"><input type="text" name="EmnotOcc" class="input_text" placeholder="디자인 / 프론트 / 백엔드" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table_title">면접유형</td>
-                    <td class="table_content"><input type="text" name="InterCate" class="input_text" placeholder="비대면: 0 / 대면: 1" /></td>
-                    <td class="table_title">근무지역</td>
-                    <td class="table_content"><input type="text" name="EmnotArea" class="input_text" /></td>
-                </tr>
-                <tr>
-                    <td class="table_title">시작일</td>
-                    <td class="table_content"><input type="date" class="input_date" name="EmnotStart" required /></td>
-                    <td class="table_title">종료일</td>
-                    <td class="table_content"><input type="date" class="input_date" name="EmnotEnd" required /></td>
-                </tr>
-                <tr>
-                    <td class="table_title">경력</td>
-                    <td class="table_content"><input type="text" class="input_text" placeholder="신입 / 경력"
-                                                     maxlength="25" name="EmnotCareer" /></td>
-                    <td class="table_title">학력</td>
-                    <td class="table_content"><input type="text" class="input_text" maxlength="25" name="EmnotEducation" /></td>
-                </tr>
-                <tr>
-                    <td class="table_title">근무형태</td>
-                    <td class="table_content"><input type="text" class="input_text" maxlength="25" name="EmnotState" /></td>
-                    <td class="table_title">급여</td>
-                    <td class="table_content"><input type="text" class="input_text" maxlength="25" name="EmnotSalary" /></td>
-                </tr>
-                <tr class="apply-row">
-                    <td colspan="4">
+                <button class="write_button">작성하기</button>
+                <table>
+                    <tr>
+                        <td class="table_title">제목</td>
+                        <td class="table_content"><input type="text" name="EmnotTitle" class="input_text" maxlength="25" /></td>
+                        <td class="table_title">직종</td>
+                        <td class="table_content"><input type="text" name="EmnotOcc" class="input_text" placeholder="디자인 / 프론트 / 백엔드" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_title">면접유형</td>
+                        <td class="table_content"><input type="text" name="InterCate" class="input_text" placeholder="비대면: 0 / 대면: 1" /></td>
+                        <td class="table_title">근무지역</td>
+                        <td class="table_content"><input type="text" name="EmnotArea" class="input_text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="table_title">시작일</td>
+                        <td class="table_content"><input type="date" class="input_date" name="EmnotStart" required /></td>
+                        <td class="table_title">종료일</td>
+                        <td class="table_content"><input type="date" class="input_date" name="EmnotEnd" required /></td>
+                    </tr>
+                    <tr>
+                        <td class="table_title">경력</td>
+                        <td class="table_content"><input type="text" class="input_text" placeholder="신입 / 경력"
+                                                         maxlength="25" name="EmnotCareer" /></td>
+                        <td class="table_title">학력</td>
+                        <td class="table_content"><input type="text" class="input_text" maxlength="25" name="EmnotEducation" /></td>
+                    </tr>
+                    <tr>
+                        <td class="table_title">근무형태</td>
+                        <td class="table_content"><input type="text" class="input_text" maxlength="25" name="EmnotState" /></td>
+                        <td class="table_title">급여</td>
+                        <td class="table_content"><input type="text" class="input_text" maxlength="25" name="EmnotSalary" /></td>
+                    </tr>
+                    <tr class="apply-row">
+                        <td colspan="4">
                             <textarea required name="EmnotContent" id="ir1" style="width: 100%; height: 300px;"></textarea>
-                    </td>
-                </tr>
-            </table>
+                            <input type="hidden" name="EmnotImage" />
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
-        </content>
+    </content>
     <div class="sidefooter" th:replace="~{comuser/sidefooter/ApplyEmploySidefooter :: applyEmploySidefooter}"></div>
 </main>
 <script>
@@ -88,46 +89,55 @@
         });
     });
 
-    let oEditors = [];
-    nhn.husky.EZCreator.createInIFrame({
-        oAppRef: oEditors,
-        elPlaceHolder: "ir1",
-        sSkinURI: "/static/smarteditor/SmartEditor2Skin.html",
-        fCreator: "createSEditor2"
-    });
-
-    let subBtn = document.querySelector('.write_button');
-
-    subBtn.onclick = () => {
-        oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-        const textarearvalue = document.querySelector("#ir1").value;
-        // <!--        alert(textarearvalue);-->
-
-        let formData = new FormData(document.querySelector("form"));
-
-        formData.forEach((v, k) => {
-            console.log("key: " + k);
-            console.log("vlaue: " + v);
-        })
-
-        $.ajax({
-            async: false,
-            type: "post",
-            url: "/comuser/save/employ",
-            enctype: "multipart/form-data",
-            contentType: false,
-            processData: false,
-            data: formData,
-            success: (response) => {
-                // <!--            마이페이지>내가신청한 공고리스트 페이지로 이동하게-->
-                // <!--                location.replace("/a/a/" + lecCode);-->
-                alert('성공');
-            },
-            error: (error) => {
-                console.log(error);
-            }
-        })
+    // 스마트 에디터 초기화
+let oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "ir1",
+    sSkinURI: "/static/smarteditor/SmartEditor2Skin.html",
+    fCreator: "createSEditor2",
+    htParams: {
+        sUploadUrl: "/comuser/save/employ"  // 이미지 업로드를 처리하는 서버 URL로 설정
     }
+});
+
+let subBtn = document.querySelector('.write_button');
+
+subBtn.onclick = () => {
+    oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+    const textarearvalue = document.querySelector("#ir1").value;
+
+    // 이미지 경로 설정
+    const sFormImage = "static/testimage"; // 실제 이미지 경로로 대체
+
+    // 이미지 경로를 EmnotImage 필드에 설정
+    document.querySelector("#EmnotImage").value = sFormImage;
+
+    let formData = new FormData(document.querySelector("form"));
+
+    formData.forEach((v, k) => {
+        console.log("key: " + k);
+        console.log("value: " + v);
+    })
+
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/comuser/save/employ",
+        enctype: "multipart/form-data",
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: (response) => {
+            alert('성공');
+        },
+        error: (error) => {
+            console.log(error);
+        }
+    })
+}
+
+
 </script>
 </body>
 

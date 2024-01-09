@@ -23,7 +23,6 @@ public class EmployForm {
     int EmnotCode;
     String EmnotTitle;
     String EmnotContent;
-    MultipartFile EmnotImage;
     String EmnotOcc;
     int RecogCheck;
     int InterCate;
@@ -39,6 +38,8 @@ public class EmployForm {
     String EmnotArea;
     String EmnotState;
     String EmnotSalary;
+//    MultipartFile EmnotImage;
+
 //    Date EmnotDate;
 
 //    public ApplyEmploy toEnttiy(){

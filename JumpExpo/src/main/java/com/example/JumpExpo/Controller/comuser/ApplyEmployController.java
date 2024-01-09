@@ -6,9 +6,7 @@ import com.example.JumpExpo.Repository.comuser.ApplyEmployRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 //2024.01.08 박은채 채용 공고 신청 Controller
 //채용 공고 신청 Controller

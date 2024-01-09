@@ -58,4 +58,7 @@ public class ApplyEmploy extends BaseEntity{
     @Column
     String emnot_salary;
 
+//    @Column
+//    String emnot_image;
+
 }
