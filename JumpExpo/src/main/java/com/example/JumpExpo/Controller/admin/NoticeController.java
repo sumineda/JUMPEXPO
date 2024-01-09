@@ -20,7 +20,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-
+//2024-01-08 유수민
+//공지사항 등록 컨트롤러
 @Slf4j
 @Controller
 @RequestMapping("/admin")
@@ -34,7 +35,7 @@ public class NoticeController {
 
         return "admin/notice/NoticeNew";
     }
-    //     강의 등록 (post)
+    //     공지사항 등록 (post)
     @PostMapping("/Notice/create")
     public String createNotice(@ModelAttribute NoticeForm form){
 
@@ -43,8 +44,8 @@ public class NoticeController {
         Notice data = form.toEntity();
         log.info(data.toString());
         //2. 변환된 Entity를 Repository를 통해서 DB에 저장
-        Notice saved = noticeRepository.save(data);
-        log.info(form.toString());
+        Notice save = noticeRepository.save(data);
+
 
         return "redirect:/admin/notice/Notice";
     }

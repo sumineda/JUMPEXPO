@@ -16,19 +16,17 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NoticeForm {
+
     int  notCode; // 공지 번호
 
     String notTitle; // 공지 제목
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    Date notDate; // 등록일
-
-    String notCnt; // 조회수
+    int notCnt; // 조회수
 
     MultipartFile notFile; // 첨부파일
 
     public Notice toEntity(){
         return new Notice(notCode,
-                notTitle,notDate,notCnt,notFile != null ? notFile.getOriginalFilename() : null);
+                notTitle,notCnt,notFile != null ? notFile.getOriginalFilename() : null);
     }
 }

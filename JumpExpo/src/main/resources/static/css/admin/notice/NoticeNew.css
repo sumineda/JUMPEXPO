@@ -1,99 +1,79 @@
- .con_search{
+
+
+.wrap {
+position:relative;
+top:-730px;
+left:-100px;
+}
+
+ .body_title {
     position: absolute;
-    top: 130px;
-    left:20px;
-  }
-  .search {
-    width: 70px;
-    height: 30px;
-    text-align: center;
-    border: 2px solid #ccc;
-  }
-  .con_search input[type=text]{
-    border: 2px solid #ccc;
+    top: 60px;
+    left: 350px;
     width: 700px;
-    height: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #374658;
   }
-  .con_search button {
-    border: 2px solid #ccc;
-    width: 110px;
-    height: 30px;
-    color: #fff;
-    background-color: #374658;
+  .body_title span{
+    font-weight: 800;
+    font-size: 30px;
   }
-  .form {
-    position: absolute;
-    width: 1100px;
+  .body_title span:last-child{
+    color: #374658;
+  }
+.form {
     border-top: 3px solid #374658;
-    top: 175px;
   }
-  .side_body_click{
-    width: 200px;
-    height: 50px;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-    border-top: none;
-  }
-  .side_body a {
-    padding: 15px;
-    color: #787878;
-    font-weight: 700;
-  }
-  .sb_click{
-    background-color: #EA8874;
-    padding: 15px;
-    color: #fff;
-    font-weight: 700;
- }
  .nt_title {
     position: absolute;
     top: 130px;
-    width: 1100px;
+    left:0px;
+    width: 700px;
     text-align: center;
     color: #787878;
     font-weight: 700;
     font-size: 13pt;
+    display:inline;
  }
   .nt_title span {
-  margin-left:10px;
   color:#787878;
+  position:absolute;
+  left:350px;
   }
 
  .nt_title input {
-    width:860px;
+    width:620px;
     height:30px;
-    margin-left:27px;
+    position:absolute;
+    left:410px;
     border:2px solid #ccc;
  }
- .nt_content {
-    width: 1100px;
-    position: absolute;
-    top: 180px;
- }
- .nt_content textarea {
-  width: 90%;
-  position: absolute;
-  left:50px;
-  border:2px solid #ccc;
- }
-.filebox {
+.nt_content {
 position:absolute;
-top:600px;
-width:1100px;
+top:180px;
+width:700px;
+left:345px;
+
 }
-.filebox .upload-name {
+.file_box {
+    position:absolute;
+    top:600px;
+    left:300px;
+    width:600px;
+}
+.file_box .upload-name {
     display: inline-block;
     height: 30px;
     padding: 0 10px;
     vertical-align: middle;
     border: 2px solid #ccc;
-    width: 780px;
+    width: 550px;
     color: #787878;
     float:right;
     position:absolute;
     left:170px;
 }
-.filebox label {
+.file_box label {
     display: inline-block;
     float:left;
     width: 110px;
@@ -107,7 +87,7 @@ width:1100px;
     line-height:30px;
     margin-left:45px;
 }
-.filebox input[type="file"] {
+.file_box input[type="file"] {
     position: absolute;
     width: 0;
     height: 0;
@@ -122,10 +102,8 @@ width:1100px;
     color: #fff;
     background-color: #374658;
     position: absolute;
-    left: 500px;
-    top:650px;
+    left: 600px;
+    top:670px;
     cursor: pointer;
   }
-  footer {
-  top:200px;
-  }
+

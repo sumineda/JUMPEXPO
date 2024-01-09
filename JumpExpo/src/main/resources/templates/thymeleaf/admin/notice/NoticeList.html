@@ -1,69 +1,57 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/css/admin/notice/Base.css" />
     <link rel="stylesheet" href="/static/css/admin/notice/Notice.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/static/js/admin/notice/jquery-3.7.0.min.js"></script>
     <title>공지사항 리스트</title>
 </head>
+
 <body>
+<div class="s_header" th:replace="~{admin/header/ScheduleHeader :: scheduleHeader}"></div>
+<div class="sidebar" th:replace="~{admin/side/ScheduleSide :: scheduleSide}"></div>
 <!--; 어떻게 뜨게 하는 건지 물어보기-->
-<!--<div class="s_header" th:replace="~{admin/header/ScheduleHeader :: scheduleHeader}"></div>-->
-<!--<div class="sidebar" th:replace="~{admin/side/ScheduleSide :: scheduleSide}"></div>-->
 <!--    관리자 공지사항 리스트-->
-<main>
-    <div class="content" >
-        <div class="body">
-            <div class="body_title">
-                <span>공지</span>
-                <span>사항</span>
-            </div>
-
-            <div class="con_search">
-                <select class="search">
-                    <option value="1">제목</option>
-                    <option value="1">번호</option>
-                </select>
-                <input type="text">
-                <button>검색</button>
-                <button class="not_button"><a href ="/admin/Notice/new" style="color:#fff;">글쓰기</a></button>
-                <!-- 총 글 수 카운트 추가 -->
-            </div>
-            <form enctype="multipart/form-data">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>등록일</th>
-                        <th>조회수</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="data : ${noticeList}">
-                        <td th:text="${data.notCode}"></td>
-                        <td th:text="${data.notTitle}"></td>
-                        <td th:text="${data.notDate}"></td>
-                        <td th:text="${data.notCnt}"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </form>
-                <!-- 페이징 처리하기 추가 -->
-        </div>
+<div class="content">
+    <div class="body_title">
+        <span>공지</span>
+        <span>사항</span>
     </div>
-        <footer>
-            <div>
-                <a class="logo" href="#"><img src="/static/images/footer_logo.png" alt="로고"></a>
-            </div>
-            <div>
-                <a href="http://www.yeilit.com/main.html" target="_blank">http://www.yeilit.com/main.html</a>
-                <span>정빈  |  성우  |  은채  |  수민</span>
-            </div>
-        </footer>
-</main>
 
+    <div class="con_search">
+        <select class="search" style="color:#787878; font-weight:700;">
+            <option value="1">제목</option>
+            <option value="1">번호</option>
+        </select>
+        <input type="text">
+        <button>검색</button>
+        <button class="not_button"><a href ="/admin/Notice/new" style="color:#fff; text-decoration:none;">글쓰기</a></button>
+        <!-- 총 글 수 카운트 추가 -->
+    </div>
+    <form enctype="multipart/form-data">
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>등록일</th>
+                <th>조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="NoticeList : ${notice}">
+                <td th:text="${NoticeList.notCode}"></td>
+                <td th:text="${NoticeList.notTitle}"></td>
+                <td th:text="${NoticeList.notDate}"></td>
+                <td th:text="${NoticeList.notCnt}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+        <!-- 페이징 처리하기 추가 -->
+</div>
 </body>
 </html>
