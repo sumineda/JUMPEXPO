@@ -6,12 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //2024.01.09 박은채
 //채용 공고 심사 Repository
 @Repository
-public interface ApplyEmployRepository  extends JpaRepository<ApplyEmploy, Integer> {
+public interface ApplyEmployRepository extends JpaRepository<ApplyEmploy, Integer> {
 
 //    @Query(value = "select *\n" +
 //            "from apply_employ" +
