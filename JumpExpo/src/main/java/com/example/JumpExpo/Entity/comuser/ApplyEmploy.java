@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 //2024.01.08 박은채 채용 공고 신청 Entity
 //채용 공고 신청 Entity
@@ -60,5 +61,4 @@ public class ApplyEmploy extends BaseEntity{
 
 //    @Column
 //    String emnot_image;
-
 }
