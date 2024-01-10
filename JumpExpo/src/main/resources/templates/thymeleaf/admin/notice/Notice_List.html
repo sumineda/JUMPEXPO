@@ -12,7 +12,7 @@
 <body>
 <div class="s_header" th:replace="~{admin/header/ScheduleHeader :: scheduleHeader}"></div>
 <div class="sidebar" th:replace="~{admin/side/ScheduleSide :: scheduleSide}"></div>
-<!--; 어떻게 뜨게 하는 건지 물어보기-->
+
 <!--    관리자 공지사항 리스트-->
 <div class="content">
     <div class="body_title">
@@ -43,15 +43,79 @@
             <tbody>
 
             <tr th:each="list : ${NoticeList}">
+
                 <td th:text="${list.not_code}"></td>
-                <td th:text="${list.not_title}"></td>
+                <td>
+                    <a th:href="@{/admin/show/nt/{notCode}(notCode=${list.not_code})}" th:text="${list.not_title}"></a>
+                </td>
                 <td th:text="${list.not_date}"></td>
                 <td th:text="${list.not_cnt}"></td>
             </tr>
             </tbody>
         </table>
     </form>
-        <!-- 페이징 처리하기 추가 -->
+
+    <div class="paging" id="pagination">
+        <button onclick="previousPage()"><</button>
+        <div id="pageNumbers"></div>
+        <button onclick="nextPage()">></button>
+    </div>
 </div>
+<script>
+    // 페이징
+        // 초기 페이지 설정
+        let currentPage = 1;
+        let rowsPerPage = 10;
+        let table = document.querySelector('table');
+        let rows = table.querySelectorAll('tr');
+        let totalRows = rows.length - 1; // 헤더 제외
+        let totalPages = Math.ceil(totalRows / rowsPerPage);
+        let pagination = document.getElementById('pageNumbers');
+
+        function showPage(page) {
+            for (let i = 1; i <= totalRows; i++) {
+                if (i <= page * rowsPerPage && i > (page - 1) * rowsPerPage) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        function generatePageNumbers() {
+            let pageNumbersHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                pageNumbersHTML += `<span class="page-number" onclick="goToPage(${i})">${i}</span>`;
+            }
+            pagination.innerHTML = pageNumbersHTML;
+        }
+
+        function goToPage(page) {
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                showPage(currentPage);
+                generatePageNumbers();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+                generatePageNumbers();
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+                generatePageNumbers();
+            }
+        }
+
+        showPage(currentPage);
+        generatePageNumbers();
+</script>
 </body>
 </html>
