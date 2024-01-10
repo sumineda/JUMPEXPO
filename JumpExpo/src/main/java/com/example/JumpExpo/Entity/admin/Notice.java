@@ -32,4 +32,9 @@ public class Notice extends DateEntity {
     @Column
     String not_file; // 첨부 파일
 
+    public Notice updateNotCnt(Integer not_cnt){
+        this.not_cnt = not_cnt+1;
+        return this;
+    }
+
 }

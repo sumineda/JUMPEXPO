@@ -92,6 +92,8 @@ public class NoticeController {
     public String show(@PathVariable Integer notCode, Model model){
         log.info("notCode = " + notCode);
 
+        Notice board = noticeService.selectNoticeDetail(notCode);
+
         Notice detail = noticeRepository.findById(notCode).orElse(null);
         model.addAttribute("notice", detail);
         return "admin/notice/Notice_Detail";

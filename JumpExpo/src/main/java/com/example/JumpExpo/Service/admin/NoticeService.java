@@ -1,5 +1,6 @@
 package com.example.JumpExpo.Service.admin;
 
+import com.example.JumpExpo.DTO.admin.NoticeForm;
 import com.example.JumpExpo.Entity.admin.Notice;
 import com.example.JumpExpo.Repository.admin.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,10 @@ public class NoticeService {
     //2024-01-10 유수민
     //조회수 트랜잭션
     @Transactional
-    public int updateNot_cnt(int not_code) {
-        return noticeRepository.updateNot_cnt(not_code);
+    public Notice selectNoticeDetail(Integer not_code){
+        Notice data = noticeRepository.findById(not_code).get();
+        data.updateNotCnt(data.getNot_cnt());
+        return data;
     }
-
 }
 
