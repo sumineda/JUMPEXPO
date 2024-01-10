@@ -30,39 +30,14 @@ public class NoticeController {
     NoticeRepository noticeRepository;
 
     //공지사항 등록 페이지
-    @GetMapping("/Notice/new")
-    public String createNt(){
-
-        return "admin/notice/NoticeNew";
+    @GetMapping("/insert/nt")
+    public String insertNt(){
+        return "admin/notice/Notice_New";
     }
-    //     공지사항 등록 (post)
-    @PostMapping("/Notice/create")
-    public String createNotice(@ModelAttribute NoticeForm form){
 
-        log.info(form.toString());
-        //1. DTO > Entity로 변환
-        Notice data = form.toEntity();
-        log.info(data.toString());
-        //2. 변환된 Entity를 Repository를 통해서 DB에 저장
-        Notice save = noticeRepository.save(data);
-
-
-        return "redirect:/admin/notice/Notice";
-    }
-    @GetMapping("/notice/Notice")
-    public String index(Model model)
-    {
-        //1. 디비에서 notice 테이블에 있는 모든 데이터 가져오기
-        ArrayList<Notice> NoticeEntityList = noticeRepository.findAll();
-
-        //2. Notice 묶음을 모델에 등록( Entity > Model )
-        model.addAttribute("NoticeList", NoticeEntityList);
-
-        //3. 뷰에 모델 뿌리기
-        return  "admin/notice/NoticeList";
-    }
-    @PostMapping("/save/NoticeFile")
-    public String SaveNotF(NoticeForm form, @RequestParam(value = "notFile",required = false) MultipartFile file1){
+    //공지사항 등록 + 이미지 처리
+    @PostMapping("/save/nt")
+    public String SaveNt(NoticeForm form, @RequestParam(value = "notFile",required = false) MultipartFile file1){
 
         log.info(form.toString());
 
@@ -83,9 +58,23 @@ public class NoticeController {
 
         Notice data = form.toEntity();
         data.setNot_code(0);
+        log.info(data.toString());
+
         Notice save = noticeRepository.save(data);
         log.info(save.toString());
 
-        return "";
+        return "redirect:/admin/show/notice";
+    }
+    @GetMapping("/show/notice")
+    public String adminShow(Model model)
+    {
+        //1. 디비에서 notice 테이블에 있는 모든 데이터 가져오기
+        ArrayList<Notice> NoticeList = noticeRepository.findAll();
+
+        //2. Notice 묶음을 모델에 등록( Entity > Model )
+        model.addAttribute("NoticeList", NoticeList);
+
+        //3. 뷰에 모델 뿌리기
+        return  "admin/notice/Notice_List";
     }
 }

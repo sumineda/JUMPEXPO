@@ -23,15 +23,11 @@ public class Notice extends DateEntity {
     @Column
     String not_title; //공지 제목
 
-//    @Temporal(TemporalType.DATE)
-//    Date not_date; //공지
+    @Column
+    String not_content; // 공지 내용
 
-    // 조회수 테스트 01-09 유수민
-//    @Column
-//    String not_cnt;
-    // 공지 조회수
     @Column(columnDefinition = "integer default 0", nullable = false)
-    private int not_cnt;
+    private int not_cnt; //조회수
 
     @Column
     String not_file; // 첨부 파일

@@ -53,7 +53,8 @@ table {
   /* margin: 1rem auto; */
   background-color: white;
   font-size: 15px;
-  /* text-align: left; */
+  text-align: center;
+  color:#787878;
 }
 
 /* 테이블 행 */

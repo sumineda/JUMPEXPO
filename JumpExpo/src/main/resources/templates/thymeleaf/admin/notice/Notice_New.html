@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link href="/static/css/admin/notice/NoticeNew.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="/static/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/static/js/admin/notice/jquery-3.7.0.min.js"></script>
+
+    <script type="text/javascript" src="/static/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <title>공지사항 등록 페이지</title>
 </head>
 
@@ -20,7 +22,7 @@
         <span style="color:#787878;">공지</span>
         <span>사항</span>
     </div>
-    <form enctype="multipart/form-data" th:action="@{/admin/Notice/create}" method="post" th:object="${NoticeForm}">
+    <form enctype="multipart/form-data">
         <table>
             <tr class="nt_title">
                 <td>
@@ -30,15 +32,15 @@
             </tr>
 
             <tr class="nt_content">
-                <td colspan="2">
-                    <textarea required name="notContent" id="ir1" style=" width:690px; height: 400px; border:2px solid #ccc;"></textarea>
+                <td colspan="4">
+                    <textarea required name="notContent" id="ir1" style="width: 100%; height:350px; border:2px solid #ccc;"></textarea>
                 </td>
             </tr>
             <!--                        첨부파일 형식 어떻게 하는 지-->
             <tr class="file_box">
                 <td>
                     <label for="file">파일찾기</label>
-                    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                    <input class="upload-name" value="" placeholder="">
                     <input type="file" id="file" name="notFile">
                 </td>
             </tr>
@@ -60,26 +62,35 @@
 
     subBtn.onclick = () => {
         oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-        const textareavalue = document.querySelector("#ir1").value;
-<!--        alert(textareavalue);-->
+        const textarearvalue = document.querySelector("#ir1").value;
+<!--        alert(textarearvalue);-->
 
         let formData = new FormData(document.querySelector("form"));
 
         formData.forEach((v,k) => {
             console.log("key: " + k);
-            console.log("value: " + v);
+            console.log("vlaue: " + v);
         })
 
-        게시글 등록일
-        window.onload = () => {
-                initNotDate();
+        $.ajax({
+            async: false,
+            type: "post",
+            url: "/admin/save/nt",
+            enctype: "multipart/form-data",
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: (response) => {
+                // <!--            고객센터>내가 등록한 페이지로 이동하게-->
+                alert('공지사항이 등록되었습니다');
+                window.location.replace("/show/notice");
+            },
+            error: (error) => {
+                console.log(error);
             }
+        })
+    }
 
-
-            // 등록일 초기화
-            function initNotDate() {
-                document.getElementById('notDate').value = dayjs().format('YYYY-MM-DD');
-            }
 </script>
 </body>
 </html>

@@ -10,8 +10,5 @@
         <module name="JumpExpo.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="JumpExpo" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
